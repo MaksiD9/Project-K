@@ -41,7 +41,7 @@ window.addEventListener('DOMContentLoaded', function() {
     
     // Timer
 
-    const deadline = '2020-05-11';
+    const deadline = '2021-08-30';
 
     function getTimeRemaining(endtime) {
         const t = Date.parse(endtime) - Date.parse(new Date()),
@@ -100,23 +100,24 @@ window.addEventListener('DOMContentLoaded', function() {
         modal = document.querySelector('.modal'),
         modalCloseBtn = document.querySelector('[data-close]');
 
+
+    function openModal(){
+        modal.classList.add('show');
+        modal.classList.remove('hide');
+        document.body.style.overflow = 'hidden';
+    }
+
     modalTrigger.forEach(btn => {
-        btn.addEventListener('click', function() {
-            modal.classList.add('show');
-            modal.classList.remove('hide');
-            // Либо вариант с toggle - но тогда назначить класс в верстке
-            document.body.style.overflow = 'hidden';
-        });
+        btn.addEventListener('click', openModal);
     });
 
     function closeModal() {
         modal.classList.add('hide');
         modal.classList.remove('show');
-        // Либо вариант с toggle - но тогда назначить класс в верстке
         document.body.style.overflow = '';
     }
-    
-    modalCloseBtn.addEventListener('click', closeModal);
+
+    modalCloseBtn.addEventListener('click',closeModal);
 
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
@@ -129,4 +130,14 @@ window.addEventListener('DOMContentLoaded', function() {
             closeModal();
         }
     });
+
+    const modalTimerId = setTimeout(openModal, 5000);
+
+    function showModalByScroll() {
+        if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight) {
+            openModal();
+            window.removeEventListener('scroll', showModalByScroll);
+        }
+    }
+    window.addEventListener('scroll', showModalByScroll);
 });
