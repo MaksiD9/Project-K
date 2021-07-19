@@ -212,4 +212,13 @@ window.addEventListener('DOMContentLoaded', function() {
         ".menu .container"
     ).render();
 
+    // Forms 
+
+    const forms = document.querySelectorAll('.form');
+
+    function postDate(form) {
+        form.addEventListener ('submit', () =>{
+
+        });
+    }
 });
