@@ -1,13 +1,11 @@
-function slider({container, slide, nextArrow, prevArrow, totalCounter, currentCounter, wrapper, field}) {
-    // Slider
-
+function slider({container, slide, nextArrow, prevArrow, totalCounter, currentCounter,wrapper, field}) {
     let offset = 0;
     let slideIndex = 1;
 
     const slides = document.querySelectorAll(slide),
         slider = document.querySelector(container),
         prev = document.querySelector(prevArrow),
-        next = document.querySelector( nextArrow),
+        next = document.querySelector(nextArrow),
         total = document.querySelector(totalCounter),
         current = document.querySelector(currentCounter),
         slidesWrapper = document.querySelector(wrapper),
@@ -48,7 +46,7 @@ function slider({container, slide, nextArrow, prevArrow, totalCounter, currentCo
         margin-right: 15%;
         margin-left: 15%;
         list-style: none;
-    `; // Если хотите - добавьте в стили, но иногда у нас нет доступа к стилям
+    `; 
     slider.append(indicators);
 
     for (let i = 0; i < slides.length; i++) {
